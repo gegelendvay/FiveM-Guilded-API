@@ -12,10 +12,10 @@ For assistance, open an Issue or join my Discord: https://discord.gg/eUDwYzk
 6. Run your FiveM server and see in the console if the connection was successful
 
 ## Documentation
-Documentation can be found on our wiki: https://github.com/gegelendvay/FiveM_Guilded_API/wiki
+Documentation can be found on the wiki: https://github.com/gegelendvay/FiveM_Guilded_API/wiki
 
 ## Usage
-Once you installed and set up the script, you can use its functions from other server-side scripts by calling `exports.FiveM_Guilded_API:GetServerMember("abcdefgh")` for example.
+Once you installed and set up the script, you can use its functions from other server-side scripts by calling `exports.FiveM_Guilded_API:GetMember("abcdefgh")` for example.
 
 ## Contributions
 If you have an update containing new and unused API endpoints or you have improvements you want to share, feel free to open a Pull Request and contribute to the project. Every contribution is much appreciated!

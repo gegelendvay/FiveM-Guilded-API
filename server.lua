@@ -13,7 +13,7 @@ function CreateMessage(channel, message)
     local request = GuildedRequest('POST', endpoint, json.encode({content = message}))
 end
 
-function GetServerMember(member)
+function GetMember(member)
     local endpoint = ('servers/%s/members/%s'):format(GuildId, member)
     local request = GuildedRequest('GET', endpoint, {})
     if request.code == 200 then
@@ -24,12 +24,28 @@ function GetServerMember(member)
     end
 end
 
-function GetServerMemberRoles(member)
+function GetMemberRoles(member)
     local endpoint = ('servers/%s/members/%s/roles'):format(GuildId, member)
     local request = GuildedRequest('GET', endpoint, {})
     if request.code == 200 then
         local data = json.decode(request.data)
         return data.roleIds
+    else
+        return request.code
+    end
+end
+
+function IsRolePresent(member, role)
+    local endpoint = ('servers/%s/members/%s/roles'):format(GuildId, member)
+    local request = GuildedRequest('GET', endpoint, {})
+    if request.code == 200 then
+        local data = json.decode(request.data)
+        for i = 0, #data.roleIds do
+            if data.roleIds[i] == tonumber(role) then
+                return true
+            end
+        end
+        return false
     else
         return request.code
     end

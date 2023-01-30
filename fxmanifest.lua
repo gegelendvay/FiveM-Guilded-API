@@ -11,5 +11,6 @@ server_scripts {
 }
 
 server_export 'CreateMessage'
-server_export 'GetServerMember'
-server_export 'GetServerMemberRoles'
+server_export 'GetMember'
+server_export 'GetMemberRoles'
+server_export 'IsRolePresent'
