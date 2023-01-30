@@ -18,7 +18,18 @@ function GetServerMember(member)
     local request = GuildedRequest('GET', endpoint, {})
     if request.code == 200 then
         local data = json.decode(request.data)
-        return data
+        return data.member
+    else
+        return request.code
+    end
+end
+
+function GetServerMemberRoles(member)
+    local endpoint = ('servers/%s/members/%s/roles'):format(GuildId, member)
+    local request = GuildedRequest('GET', endpoint, {})
+    if request.code == 200 then
+        local data = json.decode(request.data)
+        return data.roleIds
     else
         return request.code
     end

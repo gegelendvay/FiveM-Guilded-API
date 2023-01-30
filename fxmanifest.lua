@@ -12,3 +12,4 @@ server_scripts {
 
 server_export 'CreateMessage'
 server_export 'GetServerMember'
+server_export 'GetServerMemberRoles'
