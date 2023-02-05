@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game {'gta5'}
 
 description 'A Guilded API wrapper for FiveM servers.'
-version '1.0.0'
+version '1.3.0'
 author 'Gege'
 
 server_scripts {
@@ -11,6 +11,7 @@ server_scripts {
 }
 
 server_export 'CreateMessage'
+server_export 'UpdateMessage'
 server_export 'GetMember'
 server_export 'GetMemberRoles'
 server_export 'IsRolePresent'

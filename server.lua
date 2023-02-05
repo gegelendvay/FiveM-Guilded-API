@@ -8,9 +8,20 @@ local function GuildedRequest(method, endpoint, data)
     return callback
 end
 
-function CreateMessage(channel, message)
+function CreateMessage(channel, content)
     local endpoint = ('channels/%s/messages'):format(channel)
-    local request = GuildedRequest('POST', endpoint, json.encode({content = message}))
+    local request = GuildedRequest('POST', endpoint, content)
+    if request.code ~= 201 then
+        return request.code
+    end
+end
+
+function UpdateMessage(channel, message, content)
+    local endpoint = ('channels/%s/messages/%s'):format(channel, message)
+    local request = GuildedRequest('PUT', endpoint, content)
+    if request.code ~= 200 then
+        return request.code
+    end
 end
 
 function GetMember(member)
@@ -40,7 +51,7 @@ function IsRolePresent(member, role)
     local request = GuildedRequest('GET', endpoint, {})
     if request.code == 200 then
         local data = json.decode(request.data)
-        for i = 0, #data.roleIds do
+        for i = 1, #data.roleIds do
             if data.roleIds[i] == tonumber(role) then
                 return true
             end
