@@ -35,6 +35,17 @@ function GetMember(member)
     end
 end
 
+function AwardXP(member, xp)
+    local endpoint = ('servers/%s/members/%s/xp'):format(GuildId, member)
+    local request = GuildedRequest('POST', endpoint, json.encode({amount = tonumber(xp)}))
+    if request.code == 200 then
+        local data = json.decode(request.data)
+        return data.total
+    else
+        return request.code
+    end
+end
+
 function GetMemberRoles(member)
     local endpoint = ('servers/%s/members/%s/roles'):format(GuildId, member)
     local request = GuildedRequest('GET', endpoint, {})
